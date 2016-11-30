@@ -5,378 +5,43 @@
     <meta name="description" content="WWII maps" />
     <meta charset="utf-8">
     <title>WWII maps</title>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&ns=ym" type="text/javascript"></script>
-    <!-- <script src="https://yandex.st/jquery/1.8.0/jquery.min.js" type="text/javascript"></script> -->
-    <script src="map-location.js" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&ns=ymaps" type="text/javascript"></script>
+    <!--<script src="https://yandex.st/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>-->
+    <script src="scripts/map-location.js" type="text/javascript"></script>
+    <script src="scripts/custom.js" type="text/javascript"></script>
+    <style type="text/css">
+        html, body, #ymap {
+            height: 100%;
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="ymap" style="height: 600px; width: 800px;"></div>
+    <div id="ymap"></div>
     <div id='loading' style='position:absolute; top: 50%; left: 50%; font-size: 2em'>
         Loading...
     </div>
-    
 
+    <!-- Start of StatCounter Code for Default Guide -->
     <script type="text/javascript">
-    ym.ready(function() {
-        document.getElementById('loading').style.display='none';
-
-/////////////////////////Layers define//////////////////////////////
-        var layerOSM = function() {
-            //var layer = new ym.Layer('http://otile%d.mqcdn.com/tiles/1.0.0/osm/%z/%x/%y.png', {
-            var layer = new ym.Layer('http://b.tile.openstreetmap.org/%z/%x/%y.png', {
-                projection: ym.projection.sphericalMercator
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© OpenStreetMap contributors, CC-BY-SA | Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" /> | ');
-            };
-            return layer;
-        };
-        var osMap = new ym.MapType('Openstreetmap', [layerOSM]);
-        ym.mapType.storage.add('openstreet#map', osMap);
-    
-    
-        var googleSatL = function() {
-            return new ym.Layer('https://khms0.google.com/kh/v=162&%c', {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: false
-            });
-        };
-        var googleSat = new ym.MapType('Google satellite', [googleSatL]);
-        ym.mapType.storage.add('google#sat', googleSat);
-    
-    
-        var googleMapL = function() {
-            return new ym.Layer('http://mt0.google.com/vt/lyrs=m@176000000&hl=ru&%c', {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: false
-            });
-        };
-        var googleMap = new ym.MapType('Google map', [googleMapL]);
-        ym.mapType.storage.add('google#map', googleMap);
-    
-
-///////////////////////////////////////////////////////////////////////////////////////////
-
-//        var proryvL = function() {
-//              return new ym.Layer('http://vnr.github.io/aprmaps/img/wwii-burzevo/Z%z/%y/%x.png', {
-//                projection: ym.projection.sphericalMercator,
-//                tileTransparent: true
-//            });
-//        };
-//        ym.layer.storage.add('wwii#proryvL', proryvL);
-//        var proryvM = new ym.MapType('Бурцевский прорыв 01.12.1941 (old)', [proryvL]);
-//        ym.mapType.storage.add('wwii#proryv', proryvM);
-//        
-//        
-//        var ukrepL = function() {
-//              var layer = window.ukr = new ym.Layer('http://vnr.github.io/aprmaps/img/wwii-ukrep/Z%z/%y/%x.png', {
-//                projection: ym.projection.sphericalMercator,
-//                tileTransparent: true
-//            });
-//            layer.getZoomRange = function () {
-//                return ym.vow.resolve([7, 13]);
-//            };
-//            return layer;
-//        };
-//        ym.layer.storage.add('wwii#ukrepL', ukrepL)
-//        var ukrepM = new ym.MapType('1941-11 Укрепления (old)', [ukrepL]);
-//        ym.mapType.storage.add('wwii#ukrep', ukrepM); 
-        
-        
-        function getPamyatTileUrl (coord, zoom) {
-        		//var normalizedCoord = this_.getNormalizedCoord(coord, zoom);
-                var normalizedCoord = Object();
-                normalizedCoord.x = coord[0];
-                normalizedCoord.y = coord[1];
-//        		if (!normalizedCoord) {
-//        			return null;
-//        		}
-        		var bound = Math.pow(2, zoom);
-        		//var tile_path = 'http:' + def_elasti_url_base + 'tiles/' + path + '_tiles' +
-                var tile_path = 'http://cdn.pamyat-naroda.ru/tiles/Передача_087_КП097Р_С46/208-0002511-0263/00000002.jpg_tiles' +
-        			'/' + zoom + '/' + normalizedCoord.x + '/' +
-        			(bound - normalizedCoord.y - 1) + '.png';
-//        		if (!this_.isTileExists(normalizedCoord, zoom, path))
-//        			tile_path = null;
-        		return tile_path;
-        };
-        var pamfL = function() {
-            var layer =new ym.Layer(getPamyatTileUrl, {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            }
-            layer.getZoomRange = function () {
-                return ym.vow.resolve([6, 13]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#pamfL', pamfL)
-        var pamfM = new ym.MapType('Отчетная карта обстановки ЗапФ с 16 по 19.11.41 (208-2511-263)', [pamfL]);
-        ym.mapType.storage.add('wwii#pamf', pamfM); 
-        
-        
-        var proryv2L = function() {
-            var layer = new ym.Layer('http://vnr.github.io/wwii-maps/maps/burcevo/Z%z/%y/%x.png', {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            };
-            layer.getZoomRange = function () {
-                //var promise = new ym.util.Promise();
-                //return promise.resolve([10, 14]);
-                  return ym.vow.resolve([8, 14]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#proryv2L', proryv2L);
-        var proryv2M = new ym.MapType('1941-12-01 Бурцевский прорыв (208-0002511-0230)', [proryv2L]);
-        ym.mapType.storage.add('wwii#proryv2', proryv2M);
-        
-        
-        var wwii411119L = function() {
-                //var layer = new ym.Layer('file:///Y:/wwii-maps/maps/1941-11-19/Z%z/%y/%x.png', {
-                var layer = new ym.Layer('http://vnr.github.io/wwii-maps/maps/1941-11-19/Z%z/%y/%x.png', {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            };
-            layer.getZoomRange = function () {
-                return ym.vow.resolve([7, 13]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#411119', wwii411119L)
-        var wwii411119M = new ym.MapType('Карта положения войск фронта с 16 по 19.11.1941 г. (208-2511-541)', [wwii411119L]);
-        ym.mapType.storage.add('wwii#411119', wwii411119M);       
-
-        
-        function get_wwii411126L (coord, zoom) {
-        		var bound = Math.pow(2, zoom);
-                var tile_path = 'http://cdn.pamyat-naroda.ru/tiles/208-0002511-0268/00000002.jpg_tiles' +
-        			'/' + zoom + '/' + coord[0] + '/' +
-        			(bound - coord[1] - 1) + '.png';
-
-        		return tile_path;
-        };
-        var wwii411126L = function() {
-            //var layer = new ym.Layer('http://vnr.github.io/wwii-maps/maps/1941-11-26/Z%z/%y/%x.png', {
-            var layer = new ym.Layer(get_wwii411126L, {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            }
-            layer.getZoomRange = function () {
-                return ym.vow.resolve([6, 13]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#411126', wwii411126L)
-        var wwii411126M = new ym.MapType('Отчетная карта оперативного отдела ЗапФ с 24 по 26.11.41 (208-2511-268)', [wwii411126L]);
-        ym.mapType.storage.add('wwii#411126', wwii411126M);
-        
-        
-        function get_wwii411203L (coord, zoom) {
-        		var bound = Math.pow(2, zoom);
-                var tile_path = 'http://cdn.pamyat-naroda.ru/tiles/208-0002511-0275/00000003.jpg_tiles' +
-        			'/' + zoom + '/' + coord[0] + '/' +
-        			(bound - coord[1] - 1) + '.png';
-
-        		return tile_path;
-        };
-        var wwii411203L = function() {
-            var layer = new ym.Layer(get_wwii411203L, {
-            //var layer = new ym.Layer('http://vnr.github.io/wwii-maps/maps/1941-12-03/Z%z/%y/%x.png', {
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            };            
-            layer.getZoomRange = function () {
-                return ym.vow.resolve([7, 13]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#411203', wwii411203L);
-        var wwii411203M = new ym.MapType('Отчетная карта оперотдела штаба ЗапФ с 1 по 3.12.41 (208-2511-275)', [wwii411203L]);
-        ym.mapType.storage.add('wwii#411203', wwii411203M);
-        
-
-       var wwii4111ukrL = function() {
-            var layer = new ym.Layer('http://vnr.github.io/wwii-maps/maps/1941-11-ukr/z%z/%y/%x.png', {       
-                projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-            layer.getCopyrights = function() {
-                return ym.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
-            };
-            layer.getZoomRange = function () {
-                return ym.vow.resolve([7, 13]);
-            };
-            return layer;
-        };
-        ym.layer.storage.add('wwii#4111ukrL', wwii4111ukrL);
-        var wwii4111ukrM = new ym.MapType('1941-11 Укрепления (208-2511-0311)', [wwii4111ukrL]);
-        ym.mapType.storage.add('wwii#4111ukr', wwii4111ukrM);
-
-
-        var yaskeleton = function() {
-            return new ym.Layer('http://vec01.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
-//            return new ym.Layer('http://mt.google.com/vt/lyrs=h@169000000&hl=ru&%c', {
-//              return new ym.Layer('http://vnr.github.io/aprmaps/img/wwii-ukrep/Z%z/%y/%x.png', {
-                zIndex: 1000,
-                //projection: ym.projection.sphericalMercator,
-                tileTransparent: true
-            });
-        };
-        ym.layer.storage.add('my#skeleton', yaskeleton);
-        
-
-
-//////////////////////////////////////////////////////////////////////////
-
-        var initialState = MapLocationState.fromString(document.location.hash);
-        var map = window.map = new ym.Map('ymap', initialState.getData(), {
-            maxZoom: 17,
-            minZoom: 6,
-            suppressMapOpenBlock: true
-        });
-        
-        map.typeBounds = {
-            'wwii#proryv':[[55.17327, 36.48573],[55.68167, 37.5157]],
-            'wwii#proryv2':[[55.17327, 36.48573],[55.68167, 37.5157]],
-            'wwii#ukrep':[[54.31783, 35.49147],[56.69261, 37.96339]],
-            'wwii#411119':[[54.69131, 35.45302],[56.68302, 38.00734]],
-            'wwii#411126':[[54.96404, 36.01881],[57.02311, 37.5184]],
-            'wwii#411203':[[54.97036, 35.96388],[57.02011, 38.0403]],
-            'wwii#4111ukr':[[54.31783, 35.49147],[56.69261, 37.96339]]
-        };
-        map.events.add('typechange', function (e) {
-            var currentType = map.getType();
-            //console.log('typechange: ', currentType);
-            if (currentType in map.typeBounds) {
-                if ( !ym.util.bounds.areIntersecting(map.getBounds(), map.typeBounds[currentType]) ) {
-                    console.log('setting new bounds...');
-                    map.setBounds(map.typeBounds[currentType]); //{checkZoomRange: true});
-                }
-            }
-        });
-        
-
-        
-        var mapLocation = window.mapLocation = new MapLocation(map, initialState);
-        
-        map.controls.get('fullscreenControl').enterFullscreen();
-        map.behaviors.enable('scrollZoom');
-        
-        mapLocation.events.add('statechange', function (e) {
-            var state = e.get('newState'),
-                hash = '#' + state;
-            
-            if('pushState' in window.history) {
-                //window.history.pushState(state.getData(), null, hash);
-                history.replaceState(state.getData(), undefined, hash)
-            }
-            else {
-                //document.location.hash = hash;
-                document.location.replace(hash);
-            }
-        });
-
-        window.onpopstate = function (e) {
-            //var state = e.originalEvent.state;
-            var state = e.state;
-
-            if(state) {
-                mapLocation.setState(state);
-            }
-            else {
-                mapLocation.setState(initialState.getData());
-            }
-        };
-        
-        
-        var button = new ym.control.Button({
-            data: {
-                content: 'Гибрид',
-                title: 'Включить гибридный слой'
-            },
-            options: {
-                //           maxWidth: [150, 200, 300],
-                floatIndex: 2,
-                float: 'right'
-            }
-        });
-        button.events.add('click', function(e) {
-            //   this.setType('apr#osob');
-            if (button.state.get('selected') == true) {
-                this.layers.remove('my#skeleton');
-            } else {
-                this.layers.add('my#skeleton');
-            }
-        }, map)
-        map.controls.add(button);
-    
-   
-        var button2 = new ym.control.Button({
-            data: {
-                content: 'Спутник',
-                title: 'Яндекс Спутник'
-            },
-            options: {
-                selectOnClick: true
-            }
-        });
-        button2.events
-            .add('deselect', function(e) {
-                this.layers.remove('yandex#satellite');
-            }, map)
-            .add('select', function(e) {
-                this.layers.add('yandex#satellite');
-            }, map);
-        map.controls.add(button2, {
-            floatIndex: 1,
-            float: 'right'
-        });
-    
-//        map.controls.add(
-//            new ym.control.SearchControl({
-//                options: {
-//                    provider: 'yandex#publicMap',
-//                    useMapBounds: true
-//                }
-//            })
-//        );
-        
-        
-        typeSelector = new ym.control.TypeSelector({
-            data: {
-                content: 'Карты'
-            },
-            mapTypes: ['wwii#4111ukr', 'wwii#411119', 'wwii#pamf', 'wwii#411126', 'wwii#proryv2', 'wwii#411203', 'yandex#map', 'yandex#hybrid', 'yandex#publicMap', 'openstreet#map'],
-            options: {
-                size: 'large'
-            }
-        });
-        map.controls.add(typeSelector);
-    
-        //     map.copyrights.add('&copy; Vasya');
-    });
+    var sc_project = 10609041;
+    var sc_invisible = 1;
+    var sc_security = "dee819b8";
+    var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" +
+        scJsHost +
+        "statcounter.com/counter/counter.js'></" + "script>");
     </script>
-
-    <div>
-        <img src="http://mc.yandex.ru/watch/27035262" style="position:absolute; left:-9999px;" alt="" />
-    </div>
+    <noscript>
+        <div class="statcounter">
+            <img class="statcounter" src="https://c.statcounter.com/10609041/0/dee819b8/1/" height="0" width="0">
+        </div>
+    </noscript>
+    <!-- End of StatCounter Code for Default Guide -->
    
 </body>
 </html>
