@@ -69,7 +69,7 @@ ymaps.ready(function() {
 
 
     var shubertL = function() {
-        var layer =  new ymaps.Layer('http://vnr.github.io/aprmaps/img/shubert/Z%z/%y/%x.jpg', {
+        var layer =  new ymaps.Layer('https://vnr.github.io/aprmaps/img/shubert/Z%z/%y/%x.jpg', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
         });
@@ -83,7 +83,7 @@ ymaps.ready(function() {
     
     
     var genshtabL = function() {
-        var layer =  new ymaps.Layer('http://vnr.github.io/wwii-maps/maps/genshtab_500m/Z%z/%y/%x.jpg', {
+        var layer =  new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/genshtab_500m/Z%z/%y/%x.png', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
         });
@@ -97,7 +97,7 @@ ymaps.ready(function() {
 
 
      var genshtab1kL = function() {
-        var layer =  new ymaps.Layer('http://vnr.github.io/wwii-maps/maps/genshtab_1k/Z%z/%y/%x.jpg', {
+        var layer =  new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/genshtab_1k/Z%z/%y/%x.jpg', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
         });
@@ -112,7 +112,7 @@ ymaps.ready(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////
     
     var wwii411119L = function() {
-            var layer = new ymaps.Layer('http://vnr.github.io/wwii-maps/maps/1941-11-19/Z%z/%y/%x.png', {
+            var layer = new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/1941-11-19/Z%z/%y/%x.png', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
         });
@@ -130,8 +130,8 @@ ymaps.ready(function() {
     
     
    var wwii4111ukrL = function() {
-        var layer = new ymaps.Layer('http://vnr.github.io/wwii-maps/maps/1941-11-ukr/z%z/%y/%x.png', { 
-        //var layer = new ymaps.Layer('http://vnr.github.io/aprmaps/img/wwii-ukrep/Z%z/%y/%x.png', {
+        var layer = new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/1941-11-ukr/z%z/%y/%x.png', { 
+        //var layer = new ymaps.Layer('https://vnr.github.io/aprmaps/img/wwii-ukrep/Z%z/%y/%x.png', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
         });
