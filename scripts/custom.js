@@ -3,8 +3,8 @@ ymaps.ready(function() {
 
 /////////////////////////Layers define//////////////////////////////
     yaskeleton = function() {
-        //http://lrs.maps.yandex.net/tiles/?l=grd&v=1.0&%c
-        return new ymaps.Layer('http://vec0%d.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
+        //https://lrs.maps.yandex.net/tiles/?l=grd&v=1.0&%c
+        return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
             zIndex: 1000,
             //projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
@@ -14,7 +14,7 @@ ymaps.ready(function() {
     
     
     yamapL = function() {
-        return new ymaps.Layer('http://vec0%d.maps.yandex.net/tiles?l=map&%c&lang=ru_RU', {
+        return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=map&%c&lang=ru_RU', {
             tileTransparent: true
         });
     };
@@ -23,7 +23,7 @@ ymaps.ready(function() {
     
     
     yasatL = function() {
-        layer =  new ymaps.Layer('http://sat0%d.maps.yandex.net/tiles?l=sat&%c&lang=ru_RU', {
+        layer =  new ymaps.Layer('https://sat0%d.maps.yandex.net/tiles?l=sat&%c&lang=ru_RU', {
             tileTransparent: true
         });
         layer.getZoomRange = function () {
@@ -36,7 +36,7 @@ ymaps.ready(function() {
 
 
     var layerOSM = function() {
-        var layer = new ymaps.Layer('http://b.tile.openstreetmap.org/%z/%x/%y.png', {
+        var layer = new ymaps.Layer('https://b.tile.openstreetmap.org/%z/%x/%y.png', {
             projection: ymaps.projection.sphericalMercator
         });
         layer.getCopyrights = function() {
@@ -49,7 +49,7 @@ ymaps.ready(function() {
 
 
     var googleSatL = function() {
-        return new ymaps.Layer('http://khm%d|2.googleapis.com/kh?v=702&hl=ru-RU&%c', {
+        return new ymaps.Layer('https://khm%d|2.googleapis.com/kh?v=725&hl=ru-RU&%c', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: false
         });
@@ -59,7 +59,7 @@ ymaps.ready(function() {
 
 
 //        var googleMapL = function() {
-//            return new ymaps.Layer('http://mt0.google.com/vt/lyrs=m@176000000&hl=ru&%c', {
+//            return new ymaps.Layer('https://mt0.google.com/vt/lyrs=m@176000000&hl=ru&%c', {
 //                projection: ymaps.projection.sphericalMercator,
 //                tileTransparent: false
 //            });
@@ -118,7 +118,7 @@ ymaps.ready(function() {
             tileTransparent: true
         });
         layer.getCopyrights = function() {
-            return ymaps.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
+            return ymaps.vow.resolve('© Courtesy of <a href="https://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
         };
         layer.getZoomRange = function () {
             //var promise = new ymaps.util.Promise();
@@ -138,7 +138,7 @@ ymaps.ready(function() {
             tileTransparent: true
         });
         layer.getCopyrights = function() {
-            return ymaps.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
+            return ymaps.vow.resolve('© Courtesy of <a href="https://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
         };
         layer.getZoomRange = function () {
             return ymaps.vow.resolve([7, 13]);
@@ -157,7 +157,7 @@ ymaps.ready(function() {
             tileTransparent: true
         });
         layer.getCopyrights = function() {
-            return ymaps.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
+            return ymaps.vow.resolve('© Courtesy of <a href="https://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
         };
         layer.getZoomRange = function () {
             return ymaps.vow.resolve([7, 13]);
@@ -388,7 +388,7 @@ ymaps.ready(function() {
 //                });
         return function(coords, zoom) {
             var bound = Math.pow(2, zoom);
-            var tile_url = 'http://cdn.pamyat-naroda.ru/tiles/' + imagePath + '_tiles' +
+            var tile_url = 'https://cdn.pamyat-naroda.ru/tiles/' + imagePath + '_tiles' +
                 '/' + zoom + '/' + coords[0] + '/' + (bound - coords[1] - 1) + '.png';
             return tile_url;
         }
@@ -407,7 +407,7 @@ ymaps.ready(function() {
                 };
             } else {
                 layer.getCopyrights = function() {
-                    return ymaps.vow.resolve('© Courtesy of <a href="http://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
+                    return ymaps.vow.resolve('© Courtesy of <a href="https://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
                 }
             }
             
