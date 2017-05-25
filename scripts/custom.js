@@ -11,8 +11,8 @@ ymaps.ready(function() {
         });
     };
     ymaps.layer.storage.add('my#skeleton', yaskeleton);
-    
-    
+
+
     yamapL = function() {
         return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=map&%c&lang=ru_RU', {
             tileTransparent: true
@@ -20,8 +20,8 @@ ymaps.ready(function() {
     };
     ymaps.layer.storage.add('yamapL', yamapL);
     ymaps.mapType.storage.add('yamap', new ymaps.MapType('Yandex.Карта', ['yamapL']));
-    
-    
+
+
     yasatL = function() {
         layer =  new ymaps.Layer('https://sat0%d.maps.yandex.net/tiles?l=sat&%c&lang=ru_RU', {
             tileTransparent: true
@@ -80,8 +80,8 @@ ymaps.ready(function() {
     };
     ymaps.layer.storage.add('shubertL', shubertL);
     ymaps.mapType.storage.add('shubert', new ymaps.MapType('Карта Шуберта (1860)', ['shubertL']));
-    
-    
+
+
     var genshtabL = function() {
         var layer =  new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/genshtab_500m/Z%z/%y/%x.png', {
             projection: ymaps.projection.sphericalMercator,
@@ -130,8 +130,8 @@ ymaps.ready(function() {
     ymaps.layer.storage.add('wwii#proryv2L', proryv2L);
     var proryv2M = new ymaps.MapType('1941-12-01 Бурцевский прорыв (208-0002511-0230)', ['wwii#proryv2L']);
     ymaps.mapType.storage.add('wwii#proryv2', proryv2M);
-    
-    
+
+
     var wwii411119L = function() {
             var layer = new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/1941-11-19/Z%z/%y/%x.png', {
             projection: ymaps.projection.sphericalMercator,
@@ -148,8 +148,8 @@ ymaps.ready(function() {
     ymaps.layer.storage.add('wwii#411119', wwii411119L)
     var wwii411119M = new ymaps.MapType('Карта положения войск фронта 16-19.11.1941 г. (208-2511-541)', ['wwii#411119']);
     ymaps.mapType.storage.add('wwii#411119', wwii411119M); //ссылка!
-    
-    
+
+
    var wwii4111ukrL = function() {
         var layer = new ymaps.Layer('https://vnr.github.io/wwii-maps/maps/1941-11-ukr/z%z/%y/%x.png', { 
         //var layer = new ymaps.Layer('https://vnr.github.io/aprmaps/img/wwii-ukrep/Z%z/%y/%x.png', {
@@ -180,7 +180,7 @@ ymaps.ready(function() {
         'Карта положения войск 16 А 8-15 ноября 1941',
         '208_2511_690'
     );
-    
+
     addMap(
         'Передача_079_КП097Р_С46/208-0002511-0262/00000002.jpg',
         'Отчетная карта ЗапФ 11-15.11.41',
@@ -204,13 +204,13 @@ ymaps.ready(function() {
         'Отчетная карта оперотдела ЗапФ 19-23.11.41',
         '208_2511_265'
     );
-    
+
 //        addMap(
 //            '208-0002511-0266/00000002.jpg',
 //            'Отчетная карта отдела 19-23.11.41',
 //            '208_2511_266'
 //        );
-    
+
 //        addMap(
 //            '208-0002511-0267/00000002.jpg',
 //            'Отчетная карат отдела с 23-24 ноября',
@@ -234,67 +234,67 @@ ymaps.ready(function() {
         'Карта положения войск 16 А 23-27 ноября',
         '208_2511_693'
     );
-    
+
 //        addMap(
 //            '208-0002511-0272/00000002.jpg',
 //            'К отчетной карте № 258 с 27-28.11.41',
 //            '208_2511_272'
 //        );
-    
+
     addMap(
         'Передача_026_КП097Р_С39/208-0002511-0694/00000002.jpg',
         'Карта положения войск 16 А на 27-28 ноября',
         '208_2511_694'
     );
-    
+
     addMap(
         '208-0002511-0271/00000002.jpg',
         'Отчетная карта оперотдела ЗапФ с 27-28.11.41',
         '208_2511_271'
     );
-    
+
     addMap(
         '208-0002511-0273/00000002.jpg',
         'Отчетная карта ЗапФ с 28-30.11.41',
         '208_2511_273'
     );
-    
+
 //        addMap(
 //            '208-0002511-0274/00000003.jpg',
 //            'Отчетная карта ЗапФ с 28.11 по 29.11.41',
 //            '208_2511_274'
 //        );
-    
+
     addMap(
         'Передача_044_КП097Р_С39/358-0005916-0007/00000002.jpg',
         'Обстановка на фронте 16 А на 4.00 30.11.41',
         '358_5916_7'
     );
-    
+
     addMap(
         'Передача_026_КП097Р_С39/208-0002511-0697/00000002.jpg',
         'Положения 16 А на 10.00 3.12.41',
         '208_2511_697'
     );
-    
+
     addMap(
         'Передача_026_КП097Р_С39/208-0002511-0698/00000002.jpg',
         'Карта положения войск 16 А на 3 декабря',
         '208_2511_698'
     );
-    
+
     addMap(
         '208-0002511-0275/00000003.jpg',
         'Отчетная карта оперотдела ЗапФ 1-3.12.41',
         '208_2511_275'
     );
-    
+
     /*addMap(
         '208-0002511-0276/00000002.jpg',
         'Дополнение к отчетной карте оперотдела фронта с 1-3.12.41',
         '208_2511_276'
     );*/
-    
+
     addMap(
         '208-0002511-0389/00000002.jpg',
         'Обстановка на фронтах с 22.10 по 4.12',
@@ -313,7 +313,7 @@ ymaps.ready(function() {
         'Положение частей 33 А с 1-5.12.41',
         '208_2511_912'
     ); 
-    
+
     addMap(
         'Передача_026_КП097Р_С39/208-0002511-0699/00000002.jpg',
         'Карта положений частей 16 А на 4 и 5.12.41',
@@ -331,22 +331,23 @@ ymaps.ready(function() {
         'Карта положения войск 5 А 1.12.41',
         '208_2511_622'
     );
-    
+
     addMap(
         '450-0011158-0095/00000004.jpg',
         'Карта МЗО 7-25.10.41 пр. к делу № 93',
         '450-0011158-0095'
     );
-    
-    
-    
+
+
+
 ///////////////////////
-    addMap(
-        '208-0002511-0509/00000002.jpg',
-        'TEST',
-        'test'
-    );
-    
+//    addMap(
+//        //'450-0011158-0076/00000002.jpg',
+//        '450-0011158-0095/00000004.jpg', //Рабочая карта МЗО с 7 по 25.10.41 г. Приложение к делу № 93
+//        'TEST',
+//        'test'
+//    );
+
     var mapTypes = [
         '450-0011158-0095',
         'wwii#4111ukr', '208_2511_262', '208_2511_690', '208_2511_692', 
@@ -357,7 +358,6 @@ ymaps.ready(function() {
         '208_2511_912', 'wwii#proryv2',
         '208_2511_699',
         //'test', 
-
     ];
 
     typeSelector = new ymaps.control.TypeSelector({
@@ -375,7 +375,7 @@ ymaps.ready(function() {
         }
     });
 /*************************************/
-   
+
     function tileFactory(imagePath) {
 //            if (!(_id in window.image_paths)) {
 //                //var query = {"query":{"term":{"id":"101140174"}}};
@@ -393,7 +393,7 @@ ymaps.ready(function() {
             return tile_url;
         }
     }
-    
+
     function layerFactory(imagePath, params) {
         console.log('layerFactory', imagePath, params.zoomRange);
         return function(){
@@ -410,21 +410,21 @@ ymaps.ready(function() {
                     return ymaps.vow.resolve('© Courtesy of <a href="https://pamyat-naroda.ru" target="_blank">Память народа</a> | ');
                 }
             }
-            
+
             layer.getZoomRange = function () {
                 return ymaps.vow.resolve(params.zoomRange || [6, 13]);
             };
             return layer;            
        }
     }
-    
+
     function addMap(imagePath, title, hash, params) {
     /*params = {zoomRange: [], extraLayers: []}*/
         params = params || {};
         ymaps.layer.storage.add( hash + 'L', layerFactory(imagePath, params) );
         var layers = [hash + 'L'];
         if (params && 'extraLayers' in params) {
-            layers = layers.concat(params.extraLayers);
+            layers = params.extraLayers.concat(layers);
         }
         ymaps.mapType.storage.add( hash, new ymaps.MapType(title + ' (' + hash + ')', layers) );
     }
@@ -436,36 +436,41 @@ ymaps.ready(function() {
 //////////////////////////////////////////////////////////////////////////
 
     var initialState = MapLocationState.fromString(document.location.hash);
+
+    if (initialState.get('type') == 'urlMap' && initialState.get('path')) {
+        addMap(initialState.get('path'), 'urlMap', 'urlMap', {'extraLayers': ['yandex#map']});  // путь к тайлам
+    }
+
     if (!ymaps.mapType.storage.get(initialState.get('type'))) { // если в хранилище нет карты с таким типом
         initialState.set('type', 'wwii#4111ukr');
     }
-    
+
     var params = initialState.getData();
     if (!params.center) {
         params.center= [55.427437, 36.792976];
     }
-    
+
     history.replaceState(params, undefined, "#" + initialState);
-    
+
     params.controls = ["rulerControl", "zoomControl", "routeEditor"];
-    
+
     var map = window.map = new ymaps.Map('ymap', params, {
         maxZoom: 17,
         minZoom: 6,
         suppressMapOpenBlock: true,
         adjustZoomOnTypeChange: true
     });
-    
+
     //map.controls.get('fullscreenControl').enterFullscreen();
     map.behaviors.enable('scrollZoom');
-    
-    
+
+
     var mapLocation = new MapLocation(map, initialState);
-    
+
     mapLocation.events.add('statechange', function (e) {
         var state = e.get('newState'), 
             hash = '#' + state; //MapLocationState.prototype.toString
-        
+
         if('pushState' in window.history) {
             //window.history.pushState(state.getData(), null, hash);
             history.replaceState(state.getData(), undefined, hash);
@@ -493,8 +498,8 @@ ymaps.ready(function() {
             //mapLocation.setState(initialState.getData());
         }
     };
-    
-    
+
+
     map.typeBounds = {
         'wwii#proryv':[[55.17327, 36.48573],[55.68167, 37.5157]],
         'wwii#proryv2':[[55.17327, 36.48573],[55.68167, 37.5157]],
@@ -518,16 +523,16 @@ ymaps.ready(function() {
         eMap.setBounds(newBounds, {checkZoomRange: true});
         //e.get('target').events.fire('correctZoom');
     });
-    
 
-    
+
+
     function correctZoom(myMap) {
         console.log('correctZoom');
         myMap.setZoom(myMap.getZoom(), {checkZoomRange: true});
     }
-    
+
     correctZoom(map);
-    
+
     map.events.add('correctZoom', function(e) {
 //            var eMap = e.get('target');
 //            correctZoom(eMap);
@@ -543,8 +548,8 @@ ymaps.ready(function() {
 //                }
 //            });
     }, this);
-    
-    
+
+
     var button = new ymaps.control.Button({
         data: {
             content: 'Гибрид',
@@ -564,6 +569,8 @@ ymaps.ready(function() {
         }
     }, map)
     map.controls.add(button);
+//    map.layers.add('my#skeleton');
+//    button.select();
 
 
     map.controls.add(
@@ -579,14 +586,14 @@ ymaps.ready(function() {
             }
         })
     );
-    
+
 //////////////////////////////
 
     map.controls.add(typeSelector);
     //typeSelector.addMapType('208_2511_911', 4);
 
     //ymaps.mapType.storage.hash['yandex#hybrid'].getLayers();
-        
+
    overlays = [
         new ymaps.control.ListBoxItem({
             data: {
@@ -621,7 +628,7 @@ ymaps.ready(function() {
         }),
         new ymaps.control.ListBoxItem({options: {type: 'separator'}}),
     ];
-    
+
    for (var i=0; i < mapTypes.length; i++) {
        var mapType = ymaps.mapType.storage.get(mapTypes[i]);
        var item = new ymaps.control.ListBoxItem({
@@ -632,7 +639,7 @@ ymaps.ready(function() {
         });
         overlays.push(item);
    };
-   
+
     var overlayList = window.overlayList = new ymaps.control.ListBox({
             data: {
                 content: 'Overlay ',
@@ -644,7 +651,7 @@ ymaps.ready(function() {
             },
             items: overlays
     });
-    
+
     overlayList.events.add('select', function(e){
         var curItem = e.get('target');
         overlayList.each(function(i){
@@ -656,7 +663,7 @@ ymaps.ready(function() {
         map.layers.add(overlay);
         overlayList.data.set('content', 'Overlay ✔');
         //correctZoom(map);
-        
+
     }).add('deselect', function(e){
         var item = e.get('target');
         var overlay = item.data.get('overlay');
@@ -674,7 +681,7 @@ ymaps.ready(function() {
         correctZoom(map);
     });
     map.controls.add(overlayList, {float: 'right', floatIndex: 201 });
-    
+
     map.events.add('click', function () {
         if (overlayList.isExpanded()) {
             overlayList.collapse();
@@ -683,13 +690,25 @@ ymaps.ready(function() {
     typeSelector.events.add('expand', function(e) {
         overlayList.collapse();
     }, this);        
-    
+
 //        overlayList.get(0).events.add('click', function () {
 //            //debugger;
 //            overlay = 'yandex#satellite';
 //            //map.setCenter([55.752736, 37.606815]);
 //        });
 
+
+    newMap = document.querySelector("#tilePath > input");
+    newMap.onkeyup = function (e) {
+        var tilePath = e.target.value.trim();
+        if (e.keyCode == 13 && tilePath) { // Enter
+            console.log(tilePath);
+            addMap(tilePath, 'newMap', 'newMap');
+            map.setType('yasat');
+            map.setType('newMap');
+        }
+    };
+});
 
 // https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Rectangle-docpage/#param-options.cursor
 // graphics.render.detect.all, после чего в опции(рядом с цветом) передайте renderType: 'SVG'
@@ -703,7 +722,7 @@ ymaps.ready(function() {
 //});
 //map.geoObjects.add(rectangle);
 
-                                                 
+
 //ymaps.geoXml.load('https://dl.dropboxusercontent.com/u/31288655/Petrishevo.kml')
 //        .then(onGeoXmlLoad);
 //
@@ -715,4 +734,4 @@ ymaps.ready(function() {
 //    }
 //}    
 
-});
+

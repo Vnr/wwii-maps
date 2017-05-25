@@ -16,6 +16,14 @@
             border: 0;
             margin: 0;
         }
+        #tilePath {
+            position: fixed;
+            bottom: 0;
+            margin: 5px 100px;
+        }
+        #tilePath > input {
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -23,6 +31,9 @@
     <div id="ymap"></div>
     <div id='loading' style='position:absolute; top: 50%; left: 50%; font-size: 2em'>
         Loading...
+    </div>
+    <div id="tilePath">
+        <input type="text" placeholder="Путь к тайлам"/>
     </div>
 
     <!-- Start of StatCounter Code for Default Guide -->

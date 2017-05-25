@@ -38,6 +38,9 @@ MapLocation.prototype._onMapStateChange = function (e) {
             //type: e.get('newType') || oldState.get('type')
             type: e.get('target').getType() || oldState.get('type')
         });
+        if (oldState.get('type') == this._state.get('type')) {
+            this._state.set('path', oldState.get('path'));
+        }
         /**
          * @event
          * @name ymaps.Map#statechange
@@ -149,7 +152,9 @@ MapLocationState.prototype.toString = function () {
         params = [];
 
     for(var param in data) {
-        params.push(encodeURI(param) + '=' + encodeURIComponent(data[param]));
+        if (data[param] != undefined) {  // не выводим в хэш неопределенные параметры
+            params.push(encodeURI(param) + '=' + encodeURIComponent(data[param]));
+        }
     }
 
     return params.join('&');
@@ -178,7 +183,8 @@ MapLocationState.fromString = function (location) {
 		        	undefined,
         zoom: 6 <= Number(params.zoom) && Number(params.zoom) <= 13 ? Number(params.zoom) : 12,
         //controls: ["rulerControl", "fullscreenControl", "zoomControl", "routeEditor"],
-        type: params.type || 'wwii#4111ukr'
+        type: params.type || 'wwii#4111ukr',
+        path: params.path
     });
 };
 
