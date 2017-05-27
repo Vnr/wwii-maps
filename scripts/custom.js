@@ -19,7 +19,7 @@ ymaps.ready(function() {
         });
     };
     ymaps.layer.storage.add('yamapL', yamapL);
-    ymaps.mapType.storage.add('yamap', new ymaps.MapType('Yandex.Карта', ['yamapL']));
+    ymaps.mapType.storage.add('yamap', new ymaps.MapType('Яндекс.Карта', ['yamapL']));
 
 
     yasatL = function() {
@@ -32,7 +32,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('yasatL', yasatL);
-    ymaps.mapType.storage.add('yasat', new ymaps.MapType('Yandex.Спутник', ['yasatL']));
+    ymaps.mapType.storage.add('yasat', new ymaps.MapType('Яндекс.Спутник', ['yandex#satellite', 'yandex#skeleton']));
 
 
     var layerOSM = function() {
@@ -364,11 +364,10 @@ ymaps.ready(function() {
         data: {
             content: 'Основная карта'
         },
-        mapTypes: [        
-            'shubert', 'genshtab', 'genshtab1k', 
-            'google#sat', 'yasat', 'yamap', 'openstreet#map',
+        mapTypes: [
+            'yasat', 'yamap', 'google#sat', 'openstreet#map',
             'shubert', 'genshtab', 'genshtab1k',
-            //        'google#sat', 'yandex#map', 'yandex#hybrid', 'openstreet#map'
+            //'yandex#map', 'yandex#hybrid',
             ].concat(mapTypes),
         options: {
             size: 'large'
@@ -597,6 +596,20 @@ ymaps.ready(function() {
    overlays = [
         new ymaps.control.ListBoxItem({
             data: {
+                content: 'Яндекс.Спутник',
+                overlay: 'yandex#satellite'
+             },
+            //state: {selected: 'true'}
+        }),
+        new ymaps.control.ListBoxItem({
+            data: {
+                content: 'Google.Спутник',
+                overlay: 'google#satL'
+             }
+        }),
+        new ymaps.control.ListBoxItem({options: {type: 'separator'}}),
+        new ymaps.control.ListBoxItem({
+            data: {
                 content: 'Шуберт (1860)',
                 overlay: 'shubertL'
              }
@@ -612,21 +625,7 @@ ymaps.ready(function() {
                 content: 'Генштаб 1км (1982)',
                 overlay: 'genshtab1kL'
              }
-        }),            
-        new ymaps.control.ListBoxItem({
-            data: {
-                content: 'Яндекс.Спутник',
-                overlay: 'yandex#satellite'
-             },
-            //state: {selected: 'true'}
         }),
-        new ymaps.control.ListBoxItem({
-            data: {
-                content: 'Google.Спутник',
-                overlay: 'google#satL'
-             }
-        }),
-        new ymaps.control.ListBoxItem({options: {type: 'separator'}}),
     ];
 
    for (var i=0; i < mapTypes.length; i++) {
