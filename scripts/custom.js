@@ -603,6 +603,12 @@ ymaps.ready(function() {
         }),
         new ymaps.control.ListBoxItem({
             data: {
+                content: 'Яндекс.Карта',
+                overlay: 'yamapL'
+             }
+        }),
+        new ymaps.control.ListBoxItem({
+            data: {
                 content: 'Google.Спутник',
                 overlay: 'google#satL'
              }
