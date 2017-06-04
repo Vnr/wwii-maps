@@ -23,7 +23,7 @@ ymaps.ready(function() {
 
 
     yasatL = function() {
-        layer =  new ymaps.Layer('https://sat0%d.maps.yandex.net/tiles?l=sat&%c&lang=ru_RU', {
+        var layer =  new ymaps.Layer('https://sat0%d.maps.yandex.net/tiles?l=sat&%c&lang=ru_RU', {
             tileTransparent: true
         });
         layer.getZoomRange = function () {
@@ -49,10 +49,14 @@ ymaps.ready(function() {
 
 
     var googleSatL = function() {
-        return new ymaps.Layer('https://khm%d|2.googleapis.com/kh?v=725&hl=ru-RU&%c', {
+        var layer = new ymaps.Layer('https://khm%d|2.googleapis.com/kh?v=725&hl=ru-RU&%c', {
             projection: ymaps.projection.sphericalMercator,
             tileTransparent: false
         });
+        layer.getZoomRange = function () {
+            return ymaps.vow.resolve([7, 19]);
+        };
+        return layer;
     };
     ymaps.layer.storage.add('google#satL', googleSatL);
     ymaps.mapType.storage.add('google#sat', new ymaps.MapType('Google.Спутник', ['google#satL']));
