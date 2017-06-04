@@ -205,24 +205,6 @@ ymaps.ready(function() {
         '208_2511_265'
     );
 
-//        addMap(
-//            '208-0002511-0266/00000002.jpg',
-//            'Отчетная карта отдела 19-23.11.41',
-//            '208_2511_266'
-//        );
-
-//        addMap(
-//            '208-0002511-0267/00000002.jpg',
-//            'Отчетная карат отдела с 23-24 ноября',
-//            '208_2511_267'
-//        );
-
-//        addMap(
-//            '208-0002511-0269/00000002.jpg',
-//            'Отчетная карта 24-26.11.41',
-//            '208_2511_269'
-//        );
-
     addMap(
         '208-0002511-0268/00000002.jpg',
         'Отчетная карта оперотдела ЗапФ 24-26.11.41',
@@ -234,12 +216,6 @@ ymaps.ready(function() {
         'Карта положения войск 16 А 23-27 ноября',
         '208_2511_693'
     );
-
-//        addMap(
-//            '208-0002511-0272/00000002.jpg',
-//            'К отчетной карте № 258 с 27-28.11.41',
-//            '208_2511_272'
-//        );
 
     addMap(
         'Передача_026_КП097Р_С39/208-0002511-0694/00000002.jpg',
@@ -258,12 +234,6 @@ ymaps.ready(function() {
         'Отчетная карта ЗапФ с 28-30.11.41',
         '208_2511_273'
     );
-
-//        addMap(
-//            '208-0002511-0274/00000003.jpg',
-//            'Отчетная карта ЗапФ с 28.11 по 29.11.41',
-//            '208_2511_274'
-//        );
 
     addMap(
         'Передача_044_КП097Р_С39/358-0005916-0007/00000002.jpg',
@@ -394,7 +364,7 @@ ymaps.ready(function() {
     }
 
     function layerFactory(imagePath, params) {
-        console.log('layerFactory', imagePath, params.zoomRange);
+        //console.log('layerFactory', imagePath, params.zoomRange);
         return function(){
             var layer = new ymaps.Layer(tileFactory(imagePath), {
                     projection: ymaps.projection.sphericalMercator,
@@ -437,7 +407,7 @@ ymaps.ready(function() {
     var initialState = MapLocationState.fromString(document.location.hash);
 
     if (initialState.get('type') == 'urlMap' && initialState.get('path')) {
-        addMap(initialState.get('path'), 'urlMap', 'urlMap', {'extraLayers': ['yandex#map']});  // путь к тайлам
+        addMap(initialState.get('path'), 'urlMap', 'urlMap', {'extraLayers': ['yamapL']});  // путь к тайлам
     }
 
     if (!ymaps.mapType.storage.get(initialState.get('type'))) { // если в хранилище нет карты с таким типом
@@ -604,7 +574,7 @@ ymaps.ready(function() {
         new ymaps.control.ListBoxItem({
             data: {
                 content: 'Яндекс.Карта',
-                overlay: 'yamapL'
+                overlay: 'yandex#map'
              }
         }),
         new ymaps.control.ListBoxItem({
