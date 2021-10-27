@@ -4,7 +4,8 @@ ymaps.ready(function() {
 /////////////////////////Layers define//////////////////////////////
     yaskeleton = function() {
         //https://lrs.maps.yandex.net/tiles/?l=grd&v=1.0&%c
-        return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
+        //return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
+        return new ymaps.Layer('https://core-renderer-tiles.maps.yandex.net/tiles?l=skl&%c&lang=ru_RU', {
             zIndex: 1000,
             //projection: ymaps.projection.sphericalMercator,
             tileTransparent: true
@@ -14,7 +15,7 @@ ymaps.ready(function() {
 
 
     yamapL = function() {
-        return new ymaps.Layer('https://vec0%d.maps.yandex.net/tiles?l=map&%c&lang=ru_RU', {
+        return new ymaps.Layer('https://core-renderer-tiles.maps.yandex.net/tiles?l=map&%c&lang=ru_RU', {
             tileTransparent: true
         });
     };
@@ -339,7 +340,9 @@ ymaps.ready(function() {
             content: 'Основная карта'
         },
         mapTypes: [
-            'yasat', 'yamap', 'google#sat', 'openstreet#map',
+            'yasat', 'yamap',
+            //'google#sat',
+            'openstreet#map',
             'shubert', 'genshtab', 'genshtab1k',
             //'yandex#map', 'yandex#hybrid',
             ].concat(mapTypes),
@@ -361,7 +364,7 @@ ymaps.ready(function() {
 //                });
         return function(coords, zoom) {
             var bound = Math.pow(2, zoom);
-            var tile_url = 'https://cdn.pamyat-naroda.ru/tiles/' + imagePath + '_tiles' +
+            var tile_url = 'https://cdnc.pamyat-naroda.ru/tiles/' + imagePath + '_tiles' +
                 '/' + zoom + '/' + coords[0] + '/' + (bound - coords[1] - 1) + '.png';
             return tile_url;
         }
@@ -411,7 +414,7 @@ ymaps.ready(function() {
     var initialState = MapLocationState.fromString(document.location.hash);
 
     if (initialState.get('type') == 'urlMap' && initialState.get('path')) {
-        addMap(initialState.get('path'), 'urlMap', 'urlMap', {'extraLayers': ['yamapL']});  // путь к тайлам
+        addMap(initialState.get('path'), 'urlMap', 'urlMap', {'extraLayers': ['layerOSM']});  // путь к тайлам
     }
 
     if (!ymaps.mapType.storage.get(initialState.get('type'))) { // если в хранилище нет карты с таким типом
@@ -581,12 +584,12 @@ ymaps.ready(function() {
                 overlay: 'yandex#map'
              }
         }),
-        new ymaps.control.ListBoxItem({
+        /* new ymaps.control.ListBoxItem({
             data: {
                 content: 'Google.Спутник',
                 overlay: 'google#satL'
              }
-        }),
+        }), */
         new ymaps.control.ListBoxItem({options: {type: 'separator'}}),
         new ymaps.control.ListBoxItem({
             data: {
