@@ -84,7 +84,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('shubertL', shubertL);
-    ymaps.mapType.storage.add('shubert', new ymaps.MapType('Карта Шуберта (1860)', ['shubertL']));
+    ymaps.mapType.storage.add('shubert', new ymaps.MapType('Карта Шуберта (1860)', ['yamapL', 'shubertL']));
 
 
     var genshtabL = function() {
@@ -98,7 +98,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('genshtabL', genshtabL);
-    ymaps.mapType.storage.add('genshtab', new ymaps.MapType('Генштаб 500м (1982)', ['genshtabL']));
+    ymaps.mapType.storage.add('genshtab', new ymaps.MapType('Генштаб 500м (1982)', ['yamapL', 'genshtabL']));
 
 
      var genshtab1kL = function() {
@@ -112,7 +112,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('genshtab1kL', genshtab1kL);
-    ymaps.mapType.storage.add('genshtab1k', new ymaps.MapType('Генштаб 1км (1982)', ['genshtab1kL']));
+    ymaps.mapType.storage.add('genshtab1k', new ymaps.MapType('Генштаб 1км (1982)', ['yamapL', 'genshtab1kL']));
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -133,7 +133,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('wwii#proryv2L', proryv2L);
-    var proryv2M = new ymaps.MapType('1941-12-01 Бурцевский прорыв (208-0002511-0230)', ['wwii#proryv2L']);
+    var proryv2M = new ymaps.MapType('1941-12-01 Бурцевский прорыв (208-0002511-0230)', ['yamapL', 'wwii#proryv2L']);
     ymaps.mapType.storage.add('wwii#proryv2', proryv2M);
 
 
@@ -151,7 +151,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('wwii#411119', wwii411119L)
-    var wwii411119M = new ymaps.MapType('Карта положения войск фронта 16-19.11.1941 г. (208-2511-541)', ['wwii#411119']);
+    var wwii411119M = new ymaps.MapType('Карта положения войск фронта 16-19.11.1941 г. (208-2511-541)', ['yamapL', 'wwii#411119']);
     ymaps.mapType.storage.add('wwii#411119', wwii411119M); //ссылка!
 
 
@@ -170,7 +170,7 @@ ymaps.ready(function() {
         return layer;
     };
     ymaps.layer.storage.add('wwii#4111ukrL', wwii4111ukrL);
-    var wwii4111ukrM = new ymaps.MapType('1941-11 Карта-схема инженерных заграждений (208-2511-0311)', ['wwii#4111ukrL']);
+    var wwii4111ukrM = new ymaps.MapType('1941-11 Карта-схема инженерных заграждений (208-2511-0311)', ['yamapL', 'wwii#4111ukrL']);
     ymaps.mapType.storage.add('wwii#4111ukr', wwii4111ukrM);
 
 
@@ -616,7 +616,7 @@ ymaps.ready(function() {
        var item = new ymaps.control.ListBoxItem({
             data: {
                 content: mapType.getName(),
-                overlay: mapType.getLayers()[0]
+                overlay: mapType.getLayers().slice(-1)[0] 
              }
         });
         overlays.push(item);
